@@ -1,0 +1,32 @@
+Update information about a user
+Requires authentication token
+---
+parameters:
+  - name: id
+    in: path
+    description: unique identifier for the user
+    required: true
+    type: string
+    default: "1"
+  - in: body
+    name: user
+    required: true
+    description: The user to update.
+    schema:
+      type: object
+      required:
+        - username
+        - email
+        - password
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+responses:
+  200:
+    description: Information about a user
+  400:
+    description: Bad request

@@ -1,0 +1,6 @@
+Return information about all users
+Requires authentication token
+---
+responses:
+  200:
+    description: Information about all users

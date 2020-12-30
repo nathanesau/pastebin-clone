@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<h1>Hi {{ current_user.username }}</h1>
+
+<p>You have {{ current_app.config['USER_PASTES_LIMIT'] - current_user.pastes.count() }} pastes remaining.</p>
+
+{% if current_app.config['USER_PASTES_LIMIT'] - current_user.pastes.count() > 0 %}
+{% include 'main/forms/paste_form.html' %}
+{% endif %}
+
+{% endblock %}P

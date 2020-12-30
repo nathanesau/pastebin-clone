@@ -1,0 +1,25 @@
+Create a new user
+---
+parameters:
+  - in: body
+    required: true
+    name: user
+    description: The user to create.
+    schema:
+      type: object
+      required:
+        - username
+        - email
+        - password
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+responses:
+  201:
+    description: User created successfully
+  400:
+    description: Bad request

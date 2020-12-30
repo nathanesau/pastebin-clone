@@ -1,0 +1,13 @@
+Return information about a user
+Requires authentication token
+---
+parameters:
+  - name: id
+    in: path
+    description: unique identifier for the user
+    required: true
+    type: string
+    default: "1"
+responses:
+  200:
+    description: Information about a user

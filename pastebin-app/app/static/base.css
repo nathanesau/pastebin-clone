@@ -1,0 +1,15 @@
+textarea
+{
+    width:100%;
+    padding:0.5%;
+}
+
+th .data {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+td .data {
+    border: 1px solid black;
+    padding: 10px;
+}

@@ -1,0 +1,30 @@
+<table class="table table-hover">
+    <tr>
+        <td width="70px">
+            <a href="{{ url_for('main.user', username=paste.author.username) }}">
+                <img src="{{ paste.author.avatar(70) }}">
+            </a>
+        </td>
+        <td>
+            {% set user_link %}
+                <span class="user_popup">
+                    <a href="{{ url_for('main.user', username=paste.author.username) }}">
+                        {{ paste.author.username }}
+                    </a>
+                </span>
+            {% endset %}
+
+            {{ user_link }} said {{ moment(paste.created_at).fromNow() }}
+            <br>
+
+            <span id="paste{{ paste.id}}">{{ get_preview(paste.shortlink) }}</span><br>
+            {% for tag in parse_tags(paste.json_metadata) %}
+            <span class="badge badge-secondary">{{ tag }}</span>
+            {% endfor %}
+        </td>
+        <td style="text-align:right">
+            <a href="{{ url_for('main.paste_file', filename=paste.shortlink + '.txt') }}">View</a> |
+            <a href="{{ url_for('main.paste_file', filename=paste.shortlink + '.txt') }}">Delete</a>
+        </td>
+    </tr>
+</table>

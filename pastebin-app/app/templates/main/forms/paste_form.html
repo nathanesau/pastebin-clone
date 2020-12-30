@@ -1,0 +1,45 @@
+<form class="form" action="" method="post" role="form" autocomplete="off">
+    {{ form.csrf_token }}
+    <div class="form-group required">
+        <!-- paste input -->
+        <p>
+        {{ form.paste.label }}<br>
+        {{ form.paste(width="100%", rows="5") }}
+        {% for error in form.paste.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        </p>
+        <p>
+        {{ form.tag.label }}<br>
+        <!-- selected tags -->
+        {% if paste_tags %}
+            {% for tag in paste_tags %}
+            <span class="badge badge-secondary">{{ tag }}</span>
+            {% endfor %}
+            <br>
+        {% endif %}
+        <!-- tag input -->
+        {{ form.tag(list="tag_list") }}
+        <datalist id="tag_list">
+        {% for entry in paste_tags_ac_entries %}
+        <option value="{{ entry }}"></option>
+        {% endfor %}
+        </datalist>
+        <input id="tagbtn" class="btn btn-default" name="tagbtn" type="submit" value="add tag"><br>
+        {% for error in form.tag.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        </p>
+        <!-- expiration -->
+        <p>
+        {{ form.expires.label }}<br>
+        {% for subfield in form.expires %}
+        <tr>
+            <td>{{ subfield }}&nbsp;</td>
+            <td>{{ subfield.label }}&nbsp;</td>
+        </tr>
+        {% endfor %}
+        </p>
+    </div>
+    <input id="submit" class="btn btn-default" name="submit" type="submit" value="Submit">
+</form>
