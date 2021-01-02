@@ -19,6 +19,7 @@ pastebin-clone
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.explore') }}">Explore</a></li>
             </ul>
             {% if g.search_form %}
             <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">

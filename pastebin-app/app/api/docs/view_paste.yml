@@ -1,0 +1,14 @@
+View a paste
+---
+parameters:
+  - name: shortlink
+    in: path
+    description: shortlink for the paste
+    required: true
+    type: string
+    default: "None"
+responses:
+  200:
+    description: Paste content
+  404:
+    description: Not found

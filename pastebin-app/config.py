@@ -12,7 +12,7 @@ class Config:
         'vZ9YVje1aU'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PASTES_PER_PAGE = 10
-    USER_PASTES_LIMIT = 12
+    USER_PASTES_LIMIT = 25
     PASTES_FOLDER = os.getenv('PASTES_FOLDER') or \
         f"{os.path.dirname(os.path.realpath(__file__))}/pastes"
     ALLOWED_EXTENSIONS = {'txt'}
@@ -52,7 +52,7 @@ SWAGGER_TEMPLATE = {
             "name": "Authorization",
             "in": "header",
             "description": (
-                "Token: 'curl --user \"username:password\" -XPOST http://localhost:5001/api/tokens'",
+                "Token: 'curl --user \"username:pass\" -XPOST http://localhost:5001/pastebin-clone/api/tokens'"
                 "\nExample: 'Bearer 2vYuaDza171SSXZWCFQWs9HaOpyBwK0i'"
             )
         }

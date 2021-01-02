@@ -5,9 +5,7 @@
         <p>
         {{ form.paste.label }}<br>
         {{ form.paste(width="100%", rows="5") }}
-        {% for error in form.paste.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+        <!--textarea errors are handled automatically-->
         </p>
         <p>
         {{ form.tag.label }}<br>

@@ -1,0 +1,14 @@
+Delete a paste
+---
+parameters:
+  - name: shortlink
+    in: path
+    description: shortlink for the paste
+    required: true
+    type: string
+    default: "None"
+responses:
+  200:
+    description: Paste deleted successfully
+  400:
+    description: Bad request

@@ -3,41 +3,40 @@
 version: '3.4'
 
 services:
-  pastebin-s3:
-    build: pastebin-s3
-    image: nathanesau/pastebin-clone:pastebin-s3
-    container_name: pastebin-s3
-    restart: always
-    #volumes:
-    #  - data01:/usr/share/elasticsearch/data
-    #ports:
-    #  - 9200:9200
-    network_mode: host
   pastebin-app:
     build: pastebin-app
     image: nathanesau/pastebin-clone:pastebin-app
     container_name: pastebin-app
     restart: always
     volumes:
-      - data02:/data
+      - data01:/data
+      - data02:/pastes
     ports:
-      - 6000:6000
+      - 5001:5001
     network_mode: host
     environment:
       - SQLALCHEMY_DATABASE_URI=sqlite:////data/app.db
-      - ELASTICSEARCH_URL=http://127.0.0.1:9200/
+      - PASTES_FOLDER=/pastes
+  pastebin-bgtasks:
+    build: pastebin-bgtasks
+    image: nathanesau/pastebin-clone:pastebin-bgtasks
+    container_name: pastebin-bgtasks
+    restart: always
+    network_mode: host
+    environment:
+      - PASTEBIN_API_URL=http://127.0.0.1:5001/pastebin-clone/api
     depends_on:
-      - twitter-search
-  twitter-nginx:
-    build: twitter-nginx
-    image: nathanesau/twitter-clone:twitter-nginx
-    container_name: twitter-nginx
+      - pastebin-app
+  pastebin-nginx:
+    build: pastebin-nginx
+    image: nathanesau/pastebin-clone:pastebin-nginx
+    container_name: pastebin-nginx
     restart: always
     ports:
       - 80:80
     network_mode: host
     depends_on:
-      - twitter-app
+      - pastebin-app
 
 volumes:
   data01:

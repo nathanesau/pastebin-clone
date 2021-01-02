@@ -1,15 +1,9 @@
 {% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-<table class="table table-hover">
-    <tr>
-        <td width="256px"><img src="{{ user.avatar(256) }}"></td>
-        <td>
-            <h1>User: {{ user.username }}</h1>
-            <p>{{ user.pastes.count() }} / {{ current_app.config['USER_PASTES_LIMIT'] }} pastes used</p>
-        </td>
-    </tr>
-</table>
+<h1>Hi {{ current_user.username }}</h1>
+
 {% for paste in pastes %}
     {% include 'main/components/paste_component.html' %}
 {% endfor %}

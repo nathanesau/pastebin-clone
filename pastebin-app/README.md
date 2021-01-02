@@ -1,6 +1,6 @@
 # pastebin-app
 
-start up flask app using port 5001 dockerhub link](https://hub.docker.com/repository/docker/nathanesau/pastebin-clone)
+start up flask app using port 5001 [dockerhub link](https://hub.docker.com/repository/docker/nathanesau/pastebin-clone)
 
 ```bash
 # build the image

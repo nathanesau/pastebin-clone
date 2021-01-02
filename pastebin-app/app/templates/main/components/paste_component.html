@@ -17,14 +17,26 @@
             {{ user_link }} said {{ moment(paste.created_at).fromNow() }}
             <br>
 
-            <span id="paste{{ paste.id}}">{{ get_preview(paste.shortlink) }}</span><br>
+            <span id="paste{{ paste.id}}">{{ get_preview(paste.shortlink) }}</span>
+            <br>
+
             {% for tag in parse_tags(paste.json_metadata) %}
             <span class="badge badge-secondary">{{ tag }}</span>
             {% endfor %}
+            <br>
+
+            {% if paste.expires_at %}
+            <span><em>Expires on {{ paste.expires_at }}</em></span>
+            {% endif %}
+            <br>
+
         </td>
+
+        {% if not read_only %}
         <td style="text-align:right">
             <a href="{{ url_for('main.paste_file', filename=paste.shortlink + '.txt') }}">View</a> |
-            <a href="{{ url_for('main.paste_file', filename=paste.shortlink + '.txt') }}">Delete</a>
+            <a href="{{ url_for('main.delete_paste', shortlink=paste.shortlink) }}">Delete</a>
         </td>
+        {% endif %}
     </tr>
 </table>

@@ -1,0 +1,25 @@
+Create a new paste
+---
+parameters:
+  - in: body
+    required: true
+    name: paste
+    description: The paste to create.
+    schema:
+      type: object
+      required:
+        - content
+        - tags
+        - expires
+      properties:
+        content:
+          type: string
+        tags:
+          type: string
+        expires:
+          type: string
+responses:
+  201:
+    description: Paste created successfully
+  400:
+    description: Bad request
